@@ -1,5 +1,4 @@
 import { createContext, FC, ReactNode, useContext, useState } from "react";
-import { TEST_NOTES } from "./constants";
 
 type Note = {
   id: string
@@ -21,11 +20,11 @@ export const useNotes = () => {
 };
 
 export const NotedProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [notes, setNotes] = useState<Note[]>(TEST_NOTES || []);
+  const [notes, setNotes] = useState<Note[]>([]);
 
   const createNote = (title: string, content: string) => {
     setNotes((prevState) => {
-      const newNote = { id: crypto.randomUUID(), title, content, updatedAt: new Date().toISOString() }
+      const newNote = { id: `${prevState.length + 1}`, title, content, updatedAt: new Date().toISOString() }
       return [newNote, ...prevState];
     });
   };

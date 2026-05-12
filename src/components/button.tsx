@@ -4,15 +4,16 @@ import { Pressable, StyleSheet, Text } from 'react-native';
 
 interface ButtonProps {
   children: ReactNode;
+  disabled?: boolean;
   onPress: () => void;
 }
 
-const Button = ({ children, onPress }: ButtonProps) => {
+const Button = ({ children, disabled = false, onPress }: ButtonProps) => {
   const { themeColors } = useTheme();
   const styles = generateStyles(themeColors);
 
   return (
-    <Pressable style={({ pressed }) => [styles.button, pressed && styles.pressed]} onPress={onPress}>
+    <Pressable style={({ pressed }) => [styles.button, pressed && styles.pressed, disabled && styles.disabled]} onPress={onPress} disabled={disabled}>
       <Text style={styles.buttonText}>{children}</Text>
     </Pressable>
   )
@@ -38,5 +39,9 @@ const generateStyles = (themeColors: ThemeColorsType) => StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 16,
     fontWeight: '700',
+  },
+  disabled: {
+    backgroundColor: themeColors.secondary,
+    opacity: 0.5
   }
 });

@@ -1,31 +1,39 @@
 import { ThemeColorsType, useTheme } from '@/provider/theme-provider';
 import { getFormattedDate } from '@/utils/date';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { useRouter } from 'expo-router';
 import React, { FC } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
-const NoteCard: FC<{ title: string, content: string, updatedAt: string }> = ({ title, content, updatedAt }) => {
+const NoteCard: FC<{ title: string, content: string, updatedAt: string, id: string }> = ({ title, content, updatedAt, id }) => {
   const { themeColors } = useTheme();
   const styles = generatedStyles(themeColors);
+  const router = useRouter();
+
+  const handleEdit = () => {
+    router.push({ pathname: '/notes/[id]', params: { id } })
+  }
 
   return (
-    <View style={styles.card}>
-      <View style={styles.glowSmall} />
-      <View style={styles.cardHeader}>
-        <View style={styles.timeBadge}>
-          <Text style={styles.timeText}>{getFormattedDate(new Date(updatedAt))}</Text>
+    <Pressable onPress={handleEdit}>
+      <View style={styles.card}>
+        <View style={styles.glowSmall} />
+        <View style={styles.cardHeader}>
+          <View style={styles.timeBadge}>
+            <Text style={styles.timeText}>{getFormattedDate(new Date(updatedAt))}</Text>
+          </View>
+          <View style={styles.iconBadge}>
+            <MaterialCommunityIcons name="pencil-outline" size={24} color={themeColors.primary} />
+          </View>
         </View>
-        <View style={styles.iconBadge}>
-          <MaterialCommunityIcons name="pencil-outline" size={24} color={themeColors.primary} />
-        </View>
+        <Text style={styles.title} numberOfLines={2}>
+          {title}
+        </Text>
+        <Text style={styles.content} numberOfLines={3}>
+          {content}
+        </Text>
       </View>
-      <Text style={styles.title} numberOfLines={2}>
-        {title}
-      </Text>
-      <Text style={styles.content} numberOfLines={3}>
-        {content}
-      </Text>
-    </View>
+    </Pressable>
   )
 }
 

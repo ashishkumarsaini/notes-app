@@ -11,7 +11,7 @@ export const ScreenStack = () => {
     <SafeAreaView style={styles.safeArea}>
       <Stack screenOptions={{ headerShown: false }}>
         <Stack.Screen name="index" />
-        <Stack.Screen name="note-edit" />
+        <Stack.Screen name="notes/index" />
       </Stack>
     </SafeAreaView>
   )

@@ -8,7 +8,7 @@ const NotesList = () => {
 
   return (
     <FlatList scrollEnabled={true} data={notes} renderItem={({ item }) => {
-      return <NoteCard title={item.title} content={item.content} updatedAt={item.updatedAt} />
+      return <NoteCard key={item.id} title={item.title} content={item.content} updatedAt={item.updatedAt} id={item.id} />
     }}
       ItemSeparatorComponent={() => <View style={{ height: 20 }} />}
     />

@@ -2,6 +2,7 @@ import Button from '@/components/button';
 import Header from '@/components/header';
 import NotesList from '@/components/notes-list';
 import { ThemeColorsType, useTheme } from '@/provider/theme-provider';
+import { router } from 'expo-router';
 import React from 'react';
 import {
   StyleSheet,
@@ -24,7 +25,9 @@ export default function NotesHomeScreen() {
             Save ideas, plans, and quick notes in one calm place.
           </Text>
         </View>
-        <Button onPress={() => alert('new note')}>
+        <Button onPress={() => {
+          router.push({ pathname: '/notes' })
+        }}>
           Create New Note
         </Button>
         <View style={styles.list}>
