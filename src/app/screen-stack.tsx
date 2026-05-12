@@ -20,6 +20,6 @@ export const ScreenStack = () => {
 const generateStyles = (themeColors: ThemeColorsType) => StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: themeColors.secondary,
+    backgroundColor: themeColors.primary,
   },
 });

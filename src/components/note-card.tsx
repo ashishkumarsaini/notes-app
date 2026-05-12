@@ -1,9 +1,12 @@
+import { ThemeColorsType, useTheme } from '@/provider/theme-provider';
 import { getFormattedDate } from '@/utils/date';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import React, { FC } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 const NoteCard: FC<{ title: string, content: string, updatedAt: string }> = ({ title, content, updatedAt }) => {
+  const { themeColors } = useTheme();
+  const styles = generatedStyles(themeColors);
 
   return (
     <View style={styles.card}>
@@ -13,7 +16,7 @@ const NoteCard: FC<{ title: string, content: string, updatedAt: string }> = ({ t
           <Text style={styles.timeText}>{getFormattedDate(new Date(updatedAt))}</Text>
         </View>
         <View style={styles.iconBadge}>
-          <MaterialCommunityIcons name="pencil-outline" size={24} color="black" />
+          <MaterialCommunityIcons name="pencil-outline" size={24} color={themeColors.primary} />
         </View>
       </View>
       <Text style={styles.title} numberOfLines={2}>
@@ -28,15 +31,15 @@ const NoteCard: FC<{ title: string, content: string, updatedAt: string }> = ({ t
 
 export default NoteCard
 
-const styles = StyleSheet.create({
+const generatedStyles = (themeColors: ThemeColorsType) => StyleSheet.create({
   card: {
-    backgroundColor: '#120913',
-    borderColor: 'rgba(255, 122, 47, 0.54)',
+    backgroundColor: themeColors.primary,
+    borderColor: themeColors.main,
     borderRadius: 22,
     borderWidth: 1,
     overflow: 'hidden',
     padding: 18,
-    shadowColor: '#FF6B2C',
+    shadowColor: themeColors.main,
     shadowOffset: { width: 0, height: 18 },
     shadowOpacity: 0.22,
     shadowRadius: 28,
@@ -48,7 +51,7 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     borderRadius: 75,
-    backgroundColor: '#A93218',
+    backgroundColor: themeColors.main,
     opacity: 0.24,
   },
   cardHeader: {
@@ -59,14 +62,14 @@ const styles = StyleSheet.create({
   },
   iconBadge: {
     alignItems: 'center',
-    backgroundColor: '#FF7A2F',
+    backgroundColor: themeColors.main,
     borderRadius: 18,
     height: 36,
     justifyContent: 'center',
     width: 36,
   },
   timeBadge: {
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: themeColors.primary,
     borderColor: 'rgba(255, 255, 255, 0.12)',
     borderRadius: 999,
     borderWidth: 1,
@@ -74,19 +77,19 @@ const styles = StyleSheet.create({
     paddingVertical: 7,
   },
   timeText: {
-    color: '#F3D4C7',
+    color: themeColors.secondary,
     fontSize: 12,
     fontWeight: '700',
   },
   title: {
-    color: '#FFFFFF',
+    color: themeColors.secondary,
     fontSize: 24,
     fontWeight: '900',
     letterSpacing: 0,
     lineHeight: 30,
   },
   content: {
-    color: '#D9C7C0',
+    color: themeColors.secondary,
     fontSize: 15,
     lineHeight: 22,
     marginTop: 12,

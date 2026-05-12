@@ -1,3 +1,4 @@
+import { ThemeColorsType, useTheme } from '@/provider/theme-provider';
 import React, { ReactNode } from 'react';
 import { Pressable, StyleSheet, Text } from 'react-native';
 
@@ -7,6 +8,9 @@ interface ButtonProps {
 }
 
 const Button = ({ children, onPress }: ButtonProps) => {
+  const { themeColors } = useTheme();
+  const styles = generateStyles(themeColors);
+
   return (
     <Pressable style={({ pressed }) => [styles.button, pressed && styles.pressed]} onPress={onPress}>
       <Text style={styles.buttonText}>{children}</Text>
@@ -16,11 +20,11 @@ const Button = ({ children, onPress }: ButtonProps) => {
 
 export default Button
 
-const styles = StyleSheet.create({
+const generateStyles = (themeColors: ThemeColorsType) => StyleSheet.create({
   button: {
     alignItems: 'center',
     alignSelf: 'flex-start',
-    backgroundColor: '#FF7A2F',
+    backgroundColor: themeColors.main,
     borderRadius: 24,
     marginTop: 22,
     paddingHorizontal: 20,

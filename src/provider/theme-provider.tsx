@@ -1,7 +1,7 @@
 import { createContext, FC, ReactNode, useContext, useState } from "react";
 import { useColorScheme } from "react-native";
 
-export type ThemeColorsType = { primary: string, secondary: string }
+export type ThemeColorsType = { main: string, primary: string, secondary: string }
 
 type ThemeContextType = {
   themeColors: ThemeColorsType;
@@ -10,7 +10,7 @@ type ThemeContextType = {
 
 const dark = {
   main: '#fb923c',
-  primary: '#000000',
+  primary: '#000000', // background
   secondary: '#ffffff'
 }
 const light = {

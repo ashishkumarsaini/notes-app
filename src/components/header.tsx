@@ -1,7 +1,7 @@
 import { ThemeColorsType, useTheme } from '@/provider/theme-provider';
 import { getFormattedDate } from '@/utils/date';
-import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
@@ -21,11 +21,11 @@ const Header = () => {
   return (
     <View style={styles.container}>
       <View style={styles.leftContainer}>
-        <Ionicons name="calendar-outline" size={24} color={themeColors.primary} />
+        <Ionicons name="calendar-outline" size={24} color={themeColors.main} />
         <Text style={styles.title}>{todaysData}</Text>
       </View>
       <Pressable onPress={onChangeTheme}>
-        <FontAwesome5 name="user-circle" size={24} color={themeColors.primary} />
+        <MaterialCommunityIcons name="theme-light-dark" size={24} color={themeColors.main} />
       </Pressable>
     </View>
   )
