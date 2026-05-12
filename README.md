@@ -50,7 +50,7 @@ A clean mobile notes app built with Expo and React Native. The app supports list
 
 ## Screenshots
 
-| Header 1                                                   | Header 2                                             |
+| Light Mode                                                 | Dark Mode                                            |
 | ---------------------------------------------------------- | ---------------------------------------------------- |
 | ![Home Screen Light Mode](images/home-light.jpeg)          | ![Home Screen Dark Mode](images/home-dark.jpeg)      |
 | ![Create Screen Light Mode](images/create-note-light.jpeg) | ![Edit Screen Dark Mode](images/edit-note-dark.jpeg) |
