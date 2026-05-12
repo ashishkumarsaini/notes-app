@@ -1,25 +1,11 @@
-import { NotedProvider } from '@/provider/notes-provider';
-import { Stack } from 'expo-router';
+import { RootProvider } from '@/provider/root-provider';
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { ScreenStack } from './screen-stack';
 
 export default function RootLayout() {
   return (
-    <NotedProvider>
-      <SafeAreaView style={styles.safeArea}>
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="index" />
-          <Stack.Screen name="note-edit" />
-        </Stack>
-      </SafeAreaView>
-    </NotedProvider>
+    <RootProvider>
+      <ScreenStack />
+    </RootProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: '#0B050B',
-  },
-});
