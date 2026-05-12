@@ -2,12 +2,12 @@ import { ThemeColorsType, useTheme } from '@/provider/theme-provider';
 import { getFormattedDate } from '@/utils/date';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { useRouter } from 'expo-router';
-import React, { FC } from 'react';
+import React, { FC, useMemo } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 const NoteCard: FC<{ title: string, content: string, updatedAt: string, id: string }> = ({ title, content, updatedAt, id }) => {
   const { themeColors } = useTheme();
-  const styles = generatedStyles(themeColors);
+  const styles = useMemo(() => generatedStyles(themeColors), [themeColors.primary]);
   const router = useRouter();
 
   const handleEdit = () => {
@@ -78,7 +78,7 @@ const generatedStyles = (themeColors: ThemeColorsType) => StyleSheet.create({
   },
   timeBadge: {
     backgroundColor: themeColors.primary,
-    borderColor: 'rgba(255, 255, 255, 0.12)',
+    borderColor: 'gray',
     borderRadius: 999,
     borderWidth: 1,
     paddingHorizontal: 12,

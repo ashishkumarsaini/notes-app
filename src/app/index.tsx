@@ -3,7 +3,7 @@ import Header from '@/components/header';
 import NotesList from '@/components/notes-list';
 import { ThemeColorsType, useTheme } from '@/provider/theme-provider';
 import { router } from 'expo-router';
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
   StyleSheet,
   Text,
@@ -12,7 +12,7 @@ import {
 
 export default function NotesHomeScreen() {
   const { themeColors } = useTheme();
-  const styles = generateStyles(themeColors);
+  const styles = useMemo(() => generateStyles(themeColors), [themeColors]);
 
   return (
     <View style={styles.mainContainer}>
@@ -47,6 +47,7 @@ const generateStyles = (themeColors: ThemeColorsType) => StyleSheet.create({
   appShell: {
     alignSelf: 'center',
     borderRadius: 34,
+    flex: 1,
     minHeight: 820,
     overflow: 'hidden',
     paddingTop: 20,
@@ -78,6 +79,7 @@ const generateStyles = (themeColors: ThemeColorsType) => StyleSheet.create({
     maxWidth: 310,
   },
   list: {
+    flex: 1,
     marginTop: 16
   }
 });

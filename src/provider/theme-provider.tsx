@@ -4,6 +4,7 @@ import { useColorScheme } from "react-native";
 export type ThemeColorsType = { main: string, primary: string, secondary: string }
 
 type ThemeContextType = {
+  theme: string
   themeColors: ThemeColorsType;
   onChangeTheme: () => void
 }
@@ -19,7 +20,7 @@ const light = {
   secondary: '#000000'
 }
 
-export const ThemeContext = createContext<ThemeContextType>({ themeColors: light, onChangeTheme: () => null });
+export const ThemeContext = createContext<ThemeContextType>({ theme: '', themeColors: light, onChangeTheme: () => null });
 
 export const useTheme = () => {
   return useContext(ThemeContext);
@@ -31,6 +32,7 @@ export const ThemeProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState(colorScheme);
 
   const value = {
+    theme,
     themeColors: theme === 'dark' ? dark : light,
     onChangeTheme: () => {
       setTheme((prevValue) => prevValue === 'dark' ? 'light' : 'dark');

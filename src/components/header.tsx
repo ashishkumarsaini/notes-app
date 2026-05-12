@@ -2,7 +2,7 @@ import { ThemeColorsType, useTheme } from '@/provider/theme-provider';
 import { getFormattedDate } from '@/utils/date';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 const getCurrentDate = () => {
@@ -16,7 +16,7 @@ const getCurrentDate = () => {
 const Header = () => {
   const todaysData = getFormattedDate(new Date());
   const { onChangeTheme, themeColors } = useTheme();
-  const styles = generateStyles(themeColors);
+  const styles = useMemo(() => generateStyles(themeColors), [themeColors.primary]);
 
   return (
     <View style={styles.container}>

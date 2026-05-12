@@ -1,5 +1,5 @@
 import { ThemeColorsType, useTheme } from '@/provider/theme-provider';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 import { Pressable, StyleSheet, Text } from 'react-native';
 
 interface ButtonProps {
@@ -10,7 +10,7 @@ interface ButtonProps {
 
 const Button = ({ children, disabled = false, onPress }: ButtonProps) => {
   const { themeColors } = useTheme();
-  const styles = generateStyles(themeColors);
+  const styles = useMemo(() => generateStyles(themeColors), [themeColors.primary]);
 
   return (
     <Pressable style={({ pressed }) => [styles.button, pressed && styles.pressed, disabled && styles.disabled]} onPress={onPress} disabled={disabled}>

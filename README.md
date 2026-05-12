@@ -1,56 +1,56 @@
-# Welcome to your Expo app 👋
+# Notes App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A clean mobile notes app built with Expo and React Native. The app supports listing notes, creating notes, editing existing notes, and switching between light and dark themes.
 
-## Get started
+## Tech Stack
 
-1. Install dependencies
+- Expo
+- React Native
+- TypeScript
+- Expo Router
+- React Context API
 
-   ```bash
-   npm install
-   ```
+## React Native Components Used
 
-2. Start the app
+- `View`
+- `Text`
+- `TextInput`
+- `Pressable`
+- `FlatList`
+- `KeyboardAvoidingView`
+- `StyleSheet`
+- `SafeAreaView`
 
-   ```bash
-   npx expo start
-   ```
+## Hooks Used
 
-In the output, you'll find options to open the app in a
+- `useState`
+- `useContext`
+- `useColorScheme`
+- `useTheme`
+- `useNotes`
+- `useRouter`
+- `useLocalSearchParams`
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Features
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- Notes listing screen
+- Create note form
+- Edit note form by note id
+- Theme toggle support
+- Reusable note card, button, header, and form components
 
-## Get a fresh project
+## How to Use the App
 
-When you're ready, run:
+1. Open the app to view all saved notes on the home screen.
+2. Tap `Create New Note` to open the note creation form.
+3. Enter a title and note content, then save the note.
+4. Tap any note card from the list to open the edit screen for that note.
+5. Update the title or content, then save the changes.
+6. Use the theme icon in the header to switch between light and dark mode.
 
-```bash
-npm run reset-project
-```
+## Screenshots
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-### Other setup steps
-
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+| Header 1                                                   | Header 2                                             |
+| ---------------------------------------------------------- | ---------------------------------------------------- |
+| ![Home Screen Light Mode](images/home-light.jpeg)          | ![Home Screen Dark Mode](images/home-dark.jpeg)      |
+| ![Create Screen Light Mode](images/create-note-light.jpeg) | ![Edit Screen Dark Mode](images/edit-note-dark.jpeg) |
