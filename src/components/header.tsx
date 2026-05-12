@@ -1,3 +1,4 @@
+import { getFormattedDate } from '@/utils/date';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import React from 'react';
@@ -12,11 +13,12 @@ const getCurrentDate = () => {
 };
 
 const Header = () => {
+  const todaysData = getFormattedDate(new Date());
   return (
     <View style={styles.container}>
       <View style={styles.leftContainer}>
         <Ionicons name="calendar-outline" size={24} color="#FF7A2F" />
-        <Text style={styles.title}>{getCurrentDate()}</Text>
+        <Text style={styles.title}>{todaysData}</Text>
       </View>
       <View>
         <FontAwesome5 name="user-circle" size={24} color="#FF7A2F" />

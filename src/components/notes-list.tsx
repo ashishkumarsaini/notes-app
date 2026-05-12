@@ -1,6 +1,6 @@
 import { useNotes } from '@/provider/notes-provider';
 import React from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 import NoteCard from './note-card';
 
 const NotesList = () => {
@@ -9,7 +9,9 @@ const NotesList = () => {
   return (
     <FlatList scrollEnabled={true} data={notes} renderItem={({ item }) => {
       return <NoteCard title={item.title} content={item.content} updatedAt={item.updatedAt} />
-    }} />
+    }}
+      ItemSeparatorComponent={() => <View style={{ height: 20 }} />}
+    />
   )
 }
 
