@@ -1,13 +1,13 @@
+import Button from '@/components/button';
+import Header from '@/components/header';
+import NotesList from '@/components/notes-list';
 import React from 'react';
 import {
-  Pressable,
-  ScrollView,
   StyleSheet,
   Text,
   useWindowDimensions,
   View
 } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 const recentNotes = [
   {
@@ -28,94 +28,21 @@ export default function NotesHomeScreen() {
 
   return (
     <View style={styles.mainContainer}>
-      <SafeAreaView>
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-        >
-          <View style={styles.appShell}>
-            {/* <View style={styles.orangeGlowTop} />
-            <View style={styles.orangeGlowMiddle} /> */}
-
-            <View style={styles.topBar}>
-              <Pressable style={({ pressed }) => [styles.iconButton, pressed && styles.pressed]}>
-                <View style={styles.menuLine} />
-                <View style={styles.menuLine} />
-                <View style={styles.menuLineShort} />
-              </Pressable>
-
-              <Pressable style={({ pressed }) => [styles.iconButton, pressed && styles.pressed]}>
-                <View style={styles.bellTop} />
-                <View style={styles.bellBody} />
-                <View style={styles.bellDot} />
-              </Pressable>
-            </View>
-
-            <View style={styles.heroCopy}>
-              <Text style={styles.title}>Capture Your Thoughts</Text>
-              <Text style={styles.subtitle}>
-                Save ideas, plans, and quick notes in one calm place.
-              </Text>
-            </View>
-
-            {/*<View style={styles.searchCard}>
-              <TextInput
-                placeholder="Search notes"
-                placeholderTextColor="#A99C9C"
-                style={styles.searchInput}
-              />
-            </View>
-
-            <View style={styles.featureCard}>
-              <View style={styles.featureGlow} />
-              <Text style={styles.featureTitle}>Create Notes Instantly</Text>
-              <Text style={styles.featureText}>
-                Start a quick note, save a checklist, or draft longer ideas whenever inspiration hits.
-              </Text>
-              <Button title='New Note' onPress={() => alert('button')} />
-            </View>
-
-            <View style={styles.quickGrid}>
-              <Pressable style={({ pressed }) => [styles.quickCard, pressed && styles.pressed]}>
-                <View style={styles.roundIcon}>
-                  <Text style={styles.roundIconText}>#</Text>
-                </View>
-                <Text style={styles.quickTitle}>All Notes</Text>
-                <Text style={styles.quickText}>View saved ideas</Text>
-                <Text style={styles.arrowText}>{'>'}</Text>
-              </Pressable>
-
-              <Pressable style={({ pressed }) => [styles.quickCard, pressed && styles.pressed]}>
-                <View style={styles.roundIcon}>
-                  <Text style={styles.roundIconText}>*</Text>
-                </View>
-                <Text style={styles.quickTitle}>Favorites</Text>
-                <Text style={styles.quickText}>Pinned thoughts</Text>
-                <Text style={styles.arrowText}>{'>'}</Text>
-              </Pressable>
-            </View>
-
-            <Text style={styles.sectionTitle}>Recent Notes</Text>
-
-            {recentNotes.map((note) => (
-              <Pressable
-                key={note.title}
-                style={({ pressed }) => [styles.noteCard, pressed && styles.pressed]}>
-                <View style={styles.noteGlow} />
-                <View>
-                  <Text style={styles.noteTitle}>{note.title}</Text>
-                  <Text style={styles.noteMeta}>{note.meta}</Text>
-                </View>
-                <View style={styles.noteFooter}>
-                  <Text style={styles.noteTime}>{note.time}</Text>
-                  <View style={styles.nextButton}>
-                    <Text style={styles.nextButtonText}>{'>'}</Text>
-                  </View>
-                </View>
-              </Pressable>
-            ))} */}
-          </View>
-        </ScrollView>
-      </SafeAreaView>
+      <Header />
+      {/* <View style={styles.orangeGlowTop} />
+      <View style={styles.orangeGlowMiddle} /> */}
+      <View style={styles.appShell}>
+        <View>
+          <Text style={styles.title}>Capture Your Thoughts</Text>
+          <Text style={styles.subtitle}>
+            Save ideas, plans, and quick notes in one calm place.
+          </Text>
+        </View>
+        <Button onPress={() => alert('new note')}>
+          Create New Note
+        </Button>
+        <NotesList />
+      </View>
     </View >
   );
 }
@@ -124,14 +51,14 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: '#0B050B',
+    padding: 20,
   },
   appShell: {
     alignSelf: 'center',
     borderRadius: 34,
     minHeight: 820,
     overflow: 'hidden',
-    padding: 18,
-    paddingBottom: 30,
+    paddingTop: 20,
     width: '100%',
     maxWidth: 440,
   },
@@ -203,9 +130,6 @@ const styles = StyleSheet.create({
     height: 5,
     marginTop: 2,
     width: 5,
-  },
-  heroCopy: {
-    marginBottom: 26,
   },
   title: {
     color: '#FFFFFF',
